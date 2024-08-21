@@ -1,0 +1,25 @@
+{
+    "name": "jeriatno/laravel-devsuites",
+    "description": "A collection of Laravel utilities, traits, interfaces, and services to streamline and enhance your daily development tasks.",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "IJ\\LaravelDevSuites\\": "src/"
+        }
+    },
+    "require": {
+        "illuminate/database": "^8.0|^9.0|^10.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Iwanna",
+            "email": "jeriat01@gmail.com"
+        }
+    ]
+}
