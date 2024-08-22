@@ -22,20 +22,16 @@ trait Clonable
     {
         DB::beginTransaction();
         try {
-            $this->crud->hasAccessOrFail('clone');
-            $this->crud->setOperation('clone');
-
-            // Eager load all relationships dynamically
             $model = $this->crud->model->findOrFail($id);
             $model->load($this->getModelRelations($model));
 
             $clonedModel = $this->cloneModel($model);
 
             DB::commit();
-            return ResponseBase::view($clonedModel, null, 'cloned');
+            return ResponseBase::json($clonedModel, 'cloned');
         } catch (\Exception $exception) {
             DB::rollBack();
-            return ResponseBase::view($exception, null, 'cloned');
+            return ResponseBase::json($exception, 'cloned');
         }
 
     }
@@ -144,9 +140,6 @@ trait Clonable
     {
         DB::beginTransaction();
         try {
-            $this->crud->hasAccessOrFail('clone');
-            $this->crud->setOperation('clone');
-
             $entries = $this->request->input('entries');
             $clonedEntries = [];
 
@@ -159,7 +152,7 @@ trait Clonable
             }
 
             DB::commit();
-            return ResponseBase::json(true, 'cloned');
+            return ResponseBase::json($clonedEntries, 'cloned');
         } catch (\Exception $exception) {
             DB::rollBack();
             return ResponseBase::json($exception, 'cloned');
