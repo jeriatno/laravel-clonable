@@ -1,0 +1,8 @@
+<?php
+
+namespace App\{{namespace}};
+
+interface {{name}}Contract
+{
+    //
+}
